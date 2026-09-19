@@ -15,11 +15,14 @@ from models import User
 
 def create_app():
 
+    #flask app intialization
     app = Flask(__name__)
     app.config.from_object(Config)
 
+    #cors intialization
     CORS(app,origins=["http://localhost:5173"],supports_credentials=True)
 
+    #intializing flask session
     Session(app)
     db.init_app(app)
 

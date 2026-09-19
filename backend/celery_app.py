@@ -5,15 +5,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+#celery instance 
 from app import create_app
 
 app = create_app()
 
+#redis config 
 celery = Celery("placementportal",broker=os.getenv("REDIS_BROKER_URL"),backend=os.getenv("REDIS_BACKEND_URL"),
                include=["tasks.reminder","tasks.report","tasks.export"])
 
 celery.conf.update(timezone="Asia/Kolkata", enable_utc=False)
 
+#beat schedule 
 celery.conf.beat_schedule = {
     "daily-placement-remainder":{
         "task":"tasks.reminder.daily_reminder",
@@ -25,6 +28,8 @@ celery.conf.beat_schedule = {
 
     }
 }
+
+#Flask context integration
 class FlaskTask(celery.Task):
     def __call__(self, *args, **kwargs):
         with app.app_context():
