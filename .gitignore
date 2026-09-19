@@ -1,0 +1,59 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+
+# Flask and application runtime data
+backend/instance/*
+!backend/instance/.gitkeep
+backend/flask_session/*
+!backend/flask_session/.gitkeep
+backend/uploads/*
+!backend/uploads/.gitkeep
+*.db
+*.sqlite
+*.sqlite3
+
+# Celery runtime files
+celerybeat-schedule
+celerybeat.pid
+
+# JavaScript dependencies and build output
+node_modules/
+dist/
+dist-ssr/
+coverage/
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.sw?
+*.tsbuildinfo
+
+# Test artifacts
+cypress/videos/
+cypress/screenshots/
+__screenshots__/
